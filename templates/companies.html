@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    {% include 'static/head.html' %}
+    
+<body>
+    <!-- Spinner -->
+    {% include 'static/spinner.html' %}
+    <!-- Navbar -->
+    {% include 'static/navbar.html' %}
+    <body>
+        <div class="container">
+            <h1 class="mt-5">Top Companies</h1>
+            <p class="text-primary fs-5 mb-4">By BTC hold</p>
+            <div class="container mt-5">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Country</th>
+                            <th>Total Holdings</th>
+                            <th>Total current value USD</th>
+                            <th>% of supply</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.getJSON("https://api.coingecko.com/api/v3/companies/public_treasury/bitcoin", function(data) {
+                    $.each(data['companies'], function(key, val) {
+                        var row = $("<tr>");
+                        row.append($("<td>").text(val.name));
+                        row.append($("<td>").text(val.symbol));
+                        row.append($("<td>").text(val.country));
+                        row.append($("<td>").text(val.total_holdings));
+                        row.append($("<td>").text(val.total_current_value_usd));
+                        row.append($("<td>").text(val.percentage_of_total_supply));
+                        $("#data").append(row);
+                    });
+                });
+            });
+        </script>
+    </body>
+    <!-- Footer -->
+    {% include 'static/footer.html' %}
+    <!-- Back to Top -->
+    {% include 'static/back-to-top.html' %}
+    <!-- JavaScript Libraries -->
+    {% include 'static/js-libs.html' %}
+</body>
+</html>

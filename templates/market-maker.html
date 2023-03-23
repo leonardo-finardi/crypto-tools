@@ -1,0 +1,165 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Head -->
+    {% include 'static/head.html' %}
+
+    <!-- Additional CSS -->
+    <link href="{{ url_for('static', filename='css/mm.css') }}" rel="stylesheet">
+</head>
+
+<body>
+        <!-- Spinner -->
+        {% include 'static/spinner.html' %}
+        <!-- Navbar -->
+        {% include 'static/navbar.html' %}
+        <div class="row">
+            <h1 class="mt-5 pb-4 text-center">Market Making Tool</h1>
+        </div>
+<div class="row">
+    <div class="col-md-7">
+        <div class="tradingview-widget-container pl-5 pt-3">
+            <div id="tradingview_f8aa2"></div>
+            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/GMXWETH/?exchange=UNISWAP3ARBITRUM" rel="noopener" target="_blank"><span class="blue-text">GMXWETH chart</span></a> by TradingView</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+            new TradingView.widget(
+            {
+            "autosize": true,
+            "symbol": "UNISWAP3ARBITRUM:GMXWETH",
+            "interval": "240",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview_f8aa2"
+        }
+            );
+            </script>
+        </div>
+    </div>
+    <div class="col-md-5">
+            <div class="main-boby pt-3 pr-4" style="margin:0 auto">
+                    <div class="swap-container fade show active" id="pills-swap">
+                        <div class="swap-contents">
+                            <div class="card swap-contents-card">
+                                <div class="swap-head card-header ">
+                                    CREATE L.P. - UNISWAP
+                                </div>
+                                <div class="card-body">
+                                    <div style="color:white" class="pb-2">Define the fields: </div>
+                                    <div class="btn-group-toggle row justify-content-around pb-2" data-toggle="buttons">                                  
+                                    <div class="card-input input-group">
+                                        <div class="input-card-top input-eth">
+                                            <input type="text" value="" placeholder="GMX/ETH" class="form-control" id="entry-token">
+                                            <div class="dropdown">
+                                                <span class="btn" style="color: white;">Starting Token</span>
+                                                <div class="modal fade" id="modal-token" tabindex="-1">
+                                                    <div class="eth-search-modal modal-dialog">
+                                                        <div class="eth-search-modal modal-content">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-card-top input-eth">
+                                            <input type="text" value="" placeholder="0.0" class="form-control"
+                                                aria-label="Text input with dropdown button" id="min-price">
+                                            <div class="dropdown">
+                                                <span class="btn" style="color: white;">Start Price</span>
+                                                <div class="modal fade" id="modal-token" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="eth-search-modal modal-dialog" role="document">
+                                                        <div class="eth-search-modal modal-content">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-card-top input-eth">
+                                            <input type="text" value="" placeholder="0.0" class="form-control"
+                                                aria-label="Text input with dropdown button" id="max-price">
+                                            <div class="dropdown">
+                                                <span class="btn" style="color: white;">End Price</span>
+                                                <div class="modal fade" id="modal-token" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="eth-search-modal modal-dialog" role="document">
+                                                        <div class="eth-search-modal modal-content"> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="connect-wallet-down" id="lp-create">
+                                        Open Pool
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+        <script src="./script.js"></script>
+    <!-- Back to Top -->
+    {% include 'static/back-to-top.html' %}
+    <!-- JavaScript Libraries -->
+    {% include 'static/js-libs.html' %}
+
+    <script>
+        $(document).ready(function() {
+  $('#lp-create').click(function() {
+    var minPrice = $('#min-price').val();
+    var maxPrice = $('#max-price').val();
+    var token = $('#entry-token').val().toLowerCase();
+    var url;
+
+    switch (token) {
+      case 'eth':
+        url = `https://app.uniswap.org/#/add/ETH/0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a/3000?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        break;
+      case 'gmx':
+        url = `https://app.uniswap.org/#/add/0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a/ETH/3000?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        break;
+      default:
+        break;
+    }
+    if (minPrice && maxPrice && token){
+        window.open(url, '_blank');
+    }
+    $('#min-price').val('')
+    $('#max-price').val('')
+    $('#entry-token').val('')
+  });
+});
+    </script>
+</body>
+</html>
